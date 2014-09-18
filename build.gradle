@@ -40,8 +40,32 @@ dependencies {
 groovysh {
   groovyVersion = '2.3.6'
 
+  // false to disable the shell task
+  enableAppShell = true
+
+  // false to disable the shell task
+  enableBuildShell = true
+
+  // false to disable the buildDevShell task
+  enableBuildDevShell = true
+  
   shell {
+    // sourceSetName = 'main'
+    // extraClasspath = configurations.runtime.asFileTree
+    // workingDir = file('src/main/webapp')
+    
     // Prevent application from grabbing focus on OSX
     jvmArgs = ['-Djava.awt.headless=true']
+
+    // Execute some commands at shell startup
+    // args = ['-e', 'import com.example.Example\ne = new Example()']
+    // args = ['-e', 'import groovy.grape.*']
+    args = ['-e', ':load .groovyshrc']
+  }
+
+  buildShell {
+  }
+
+  buildDevShell {
   }
 }
